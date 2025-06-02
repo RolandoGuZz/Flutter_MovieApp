@@ -13,6 +13,7 @@ class CustomSwipper extends StatelessWidget {
       width: double.infinity,
       height: size.height * 0.54,
       child: Swiper(
+        onTap: (index) => Navigator.pushNamed(context, 'details', arguments: 'la peli'),
         itemBuilder: (context, index) {
           return CustomCardImage();
         },

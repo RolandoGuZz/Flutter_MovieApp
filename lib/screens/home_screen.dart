@@ -8,14 +8,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Movie App'), backgroundColor: Colors.indigo),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomSwipper(),
-          SizedBox(height: 30),
-          CustomListView(),
-          SizedBox(height: 10),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomSwipper(),
+            SizedBox(height: 30),
+            CustomListView(),
+            SizedBox(height: 10),
+            CustomListView(),
+            SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }
