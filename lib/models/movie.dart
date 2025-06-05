@@ -2,14 +2,14 @@ import 'dart:convert';
 
 class Movie {
   bool adult;
-  String backdropPath;
+  String? backdropPath;
   List<int> genreIds;
   int id;
   String originalLanguage;
   String originalTitle;
   String overview;
   double popularity;
-  String posterPath;
+  String? posterPath;
   DateTime releaseDate;
   String title;
   bool video;
@@ -18,14 +18,14 @@ class Movie {
 
   Movie({
     required this.adult,
-    required this.backdropPath,
+    this.backdropPath,
     required this.genreIds,
     required this.id,
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-    required this.posterPath,
+    this.posterPath,
     required this.releaseDate,
     required this.title,
     required this.video,
@@ -35,18 +35,18 @@ class Movie {
 
   factory Movie.fromRawJson(String str) => Movie.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  //String toRawJson() => json.encode(toJson());
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
     adult: json["adult"],
-    backdropPath: json["backdrop_path"],
+    backdropPath: json["backdrop_path"] ?? 'bardok.png',
     genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
     id: json["id"],
     originalLanguage: "es",
     originalTitle: json["original_title"],
     overview: json["overview"],
     popularity: json["popularity"]?.toDouble(),
-    posterPath: json["poster_path"],
+    posterPath: json["poster_path"] ?? 'krilin.png',
     releaseDate: DateTime.parse(json["release_date"]),
     title: json["title"],
     video: json["video"],
@@ -54,21 +54,21 @@ class Movie {
     voteCount: json["vote_count"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "adult": adult,
-    "backdrop_path": backdropPath,
-    "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
-    "id": id,
-    "original_language": "es",
-    "original_title": originalTitle,
-    "overview": overview,
-    "popularity": popularity,
-    "poster_path": posterPath,
-    "release_date":
-        "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
-    "title": title,
-    "video": video,
-    "vote_average": voteAverage,
-    "vote_count": voteCount,
-  };
+  // Map<String, dynamic> toJson() => {
+  //   "adult": adult,
+  //   "backdrop_path": backdropPath,
+  //   "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
+  //   "id": id,
+  //   "original_language": "es",
+  //   "original_title": originalTitle,
+  //   "overview": overview,
+  //   "popularity": popularity,
+  //   "poster_path": posterPath,
+  //   "release_date":
+  //       "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
+  //   "title": title,
+  //   "video": video,
+  //   "vote_average": voteAverage,
+  //   "vote_count": voteCount,
+  // };
 }
