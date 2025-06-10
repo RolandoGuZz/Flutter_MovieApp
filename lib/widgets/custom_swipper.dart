@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/widgets/widgets.dart';
 
 class CustomSwipper extends StatelessWidget {
-  const CustomSwipper({super.key});
+  final List<Movie> movies;
+  const CustomSwipper({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +15,13 @@ class CustomSwipper extends StatelessWidget {
       width: double.infinity,
       height: size.height * 0.54,
       child: Swiper(
-        onTap: (index) => Navigator.pushNamed(context, 'details', arguments: 'la peli'),
+        onTap:
+            (index) =>
+                Navigator.pushNamed(context, 'details', arguments: 'la peli'),
         itemBuilder: (context, index) {
-          return CustomCardImage();
+          return CustomCardImage(posterPath: movies[index].getPosterPath,);
         },
-        itemCount: 10,
+        itemCount: movies.length,
         itemWidth: 300,
         autoplay: false,
         //pagination: SwiperPagination(),

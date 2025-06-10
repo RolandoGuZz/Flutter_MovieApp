@@ -25,6 +25,5 @@ class MovieProvider extends ChangeNotifier {
     final data = convert.jsonDecode(resp) as Map<String, dynamic>;
     final popularResponse = MovieResponse.fromJson(data);
     popularMovies = popularResponse.results;
-    notifyListeners();
   }
 }

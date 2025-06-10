@@ -54,6 +54,17 @@ class Movie {
     voteCount: json["vote_count"],
   );
 
+  get getPosterPath {
+    if (posterPath == null) {
+      return 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png';
+    }
+    return 'https://image.tmdb.org/t/p/w500$posterPath';
+  }
+
+  get getBackdropPath {
+    return 'https://image.tmdb.org/t/p/w500$backdropPath';
+  }
+
   // Map<String, dynamic> toJson() => {
   //   "adult": adult,
   //   "backdrop_path": backdropPath,
