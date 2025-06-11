@@ -17,7 +17,7 @@ class CustomSwipper extends StatelessWidget {
       child: Swiper(
         onTap:
             (index) =>
-                Navigator.pushNamed(context, 'details', arguments: 'la peli'),
+                Navigator.pushNamed(context, 'details', arguments: movies[index]),
         itemBuilder: (context, index) {
           return CustomCardImage(posterPath: movies[index].getPosterPath,);
         },

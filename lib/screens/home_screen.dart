@@ -11,16 +11,21 @@ class HomeScreen extends StatelessWidget {
     final providerOfMovie = Provider.of<MovieProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Movie App'), backgroundColor: Colors.indigo),
+      appBar: AppBar(
+        title: Text(
+          'Movie App',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomSwipper(movies: providerOfMovie.popularMovies),
             SizedBox(height: 30),
-            CustomListView(movies: providerOfMovie.popularMovies,),
-            SizedBox(height: 10),
-            CustomListView(movies: providerOfMovie.popularMovies,),
+            CustomListView(movies: providerOfMovie.nowPlayingMovies),
             SizedBox(height: 10),
           ],
         ),

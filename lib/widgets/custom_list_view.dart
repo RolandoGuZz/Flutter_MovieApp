@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/widgets/show_data_movie.dart';
 
 class CustomListView extends StatelessWidget {
   final List<Movie> movies;
@@ -15,17 +16,15 @@ class CustomListView extends StatelessWidget {
             'Now Playing',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 17,
-              color: Colors.indigo,
+              fontSize: 24,
+              color: Colors.black,
             ),
           ),
         ),
-        SizedBox(height: 50),
+        SizedBox(height: 30),
         SizedBox(
           height: 210,
           width: double.infinity,
-          //color: Colors.amber,
-          //GestureDetector
           child: ListView.builder(
             itemCount: movies.length,
             scrollDirection: Axis.horizontal,
@@ -35,36 +34,13 @@ class CustomListView extends StatelessWidget {
                     () => Navigator.pushNamed(
                       context,
                       'details',
-                      arguments: 'Movie',
+                      arguments: movies[i],
                     ),
                 child: Container(
                   width: 120,
                   height: 180,
                   margin: EdgeInsets.all(10),
-                  //color: Colors.indigo,
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: FadeInImage(
-                          fit: BoxFit.cover,
-                          width: 120,
-                          height: 150,
-                          placeholder: AssetImage('assets/images/loading.gif'),
-                          image: NetworkImage(movies[i].getPosterPath),
-                        ),
-                      ),
-                      Text(
-                        movies[i].title,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.indigo,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: ShowDataMovie(movies: movies, index: i,),
                 ),
               );
             },
